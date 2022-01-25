@@ -12,7 +12,7 @@ closeButton.onclick = function () {
 
 const outside = document.querySelector('#outside');
 window.onclick = function (event) {
-    if (event.target == outside) {
+    if (event.target === outside) {
         modalWindow.style.display = 'none';
     }
 }
@@ -27,22 +27,24 @@ let interval;
 
 function countdown () {
     milliseconds--;
-    appendMilliseconds.innerHTML = milliseconds
+    appendMilliseconds.innerHTML = milliseconds;
     if(milliseconds === 0) {
         seconds--;
         appendSeconds.innerHTML = seconds;
         milliseconds = 59;
-        appendMilliseconds.innerHTML = milliseconds
+        appendMilliseconds.innerHTML = milliseconds;
     }
     if(seconds === 0) {
         milliseconds--;
-        appendMilliseconds.innerHTML = milliseconds
+        appendMilliseconds.innerHTML = milliseconds;
     }
     if(milliseconds === 0 && seconds === 0) {
         clearInterval(interval);
-        startButton.onclick = function () {
-            clearInterval(interval);
-        }
+        seconds = 27;
+        appendSeconds.innerHTML = seconds;
+        milliseconds = 59;
+        appendMilliseconds.innerHTML = milliseconds;
+        startButton.disabled = true;
     }
 }
 
